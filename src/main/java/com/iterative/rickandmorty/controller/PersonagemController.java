@@ -2,9 +2,11 @@ package com.iterative.rickandmorty.controller;
 
 import java.util.List;
 
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 
@@ -15,10 +17,11 @@ import com.iterative.rickandmorty.entity.Episodio;
 import com.iterative.rickandmorty.entity.Personagem;
 
 @RestController
+@RequestMapping("/api")
 public class PersonagemController {
 
     @GetMapping(value = "/personagens")
-    public List<Personagem> Get() throws JsonMappingException, JsonProcessingException {
+    public ResponseEntity<List<Personagem>> Get() throws JsonMappingException, JsonProcessingException {
     	String BASE_URL = "https://rickandmortyapi.com/api/character";
     	RestTemplate restTemplate = new RestTemplate();
         ResponseEntity<ResponseDTO> response = restTemplate.getForEntity(BASE_URL, ResponseDTO.class);
@@ -30,7 +33,8 @@ public class PersonagemController {
 		        personagem.getEpisodes().add(responseEp.getBody());
 			}
 		}
-        return ret;
+        
+        return new ResponseEntity<List<Personagem>>(ret, HttpStatus.OK);
     }
     
     @GetMapping(value = "/personagens/{name}")
