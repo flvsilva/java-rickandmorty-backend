@@ -1,6 +1,11 @@
 package com.iterative.rickandmorty.entity;
 
+import java.util.ArrayList;
 import java.util.List;
+
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonProperty.Access;
+
 
 public class Personagem {
 	
@@ -9,7 +14,11 @@ public class Personagem {
     private String status;
     private String url;
     private String created;
-    private List<Episodio> episodes; 
+    
+    @JsonProperty(access = Access.WRITE_ONLY)
+    private List<String> episode;
+    
+    private List<Episodio> episodes = new ArrayList<Episodio>();
 
 	public long getId() {
 		return id;
@@ -51,6 +60,14 @@ public class Personagem {
 		this.created = created;
 	}
 
+	public List<String> getEpisode() {
+		return episode;
+	}
+
+	public void setEpisode(List<String> episode) {
+		this.episode = episode;
+	}
+
 	public List<Episodio> getEpisodes() {
 		return episodes;
 	}
@@ -58,6 +75,7 @@ public class Personagem {
 	public void setEpisodes(List<Episodio> episodes) {
 		this.episodes = episodes;
 	}
+
 
 
 }
