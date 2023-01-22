@@ -10,3 +10,8 @@ https://java-rickandmorty-backend.herokuapp.com/
 * /api/personagens/ -> traz todos os personagens
 
 * /api/personagens/{name} -> filtra a lista de personagens pelo nome passado
+
+### Banco H2
+
+* toda chamada é registrada no banco em memória (H2)
+* dados de acesso no application.properties
