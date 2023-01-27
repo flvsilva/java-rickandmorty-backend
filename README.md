@@ -2,8 +2,8 @@
 
 ## Desafio técnico - Iterative
 
-### CD & hosting by Heroku:
-https://java-rickandmorty-backend.herokuapp.com/
+### CD & hosting by Railway:
+https://java-rickandmorty-backend-production.up.railway.app/
 
 ### API
 
